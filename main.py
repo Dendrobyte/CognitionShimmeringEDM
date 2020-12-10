@@ -15,13 +15,22 @@ print("---- Input Gathered! ----")
 numberAmt = len(posVals)
 
 # Enter an int, not going to worry about input error
-returnDataNum = input("How many new data points would you like? Existing sample size: " + len(posVals) + "\n")
+returnDataNum = input("How many new data points would you like? Must be a number!\nExisting sample size: " + str(len(posVals)) + "\n")
 print("---- Printing " + returnDataNum + " New Data Points... ----\n")
 
 import random
 
-for i in range(returnDataNum):
-  posRand = random.randint(len(numberAmt));
-  negRand = random.randint(len(numberAmt));
-  print(str(i) + ": " )
+newPosVals = []
+newNegVals = []
+for i in range(int(returnDataNum)):
+  posRand = random.randint(0, numberAmt)-1;
+  negRand = random.randint(0, numberAmt)-1;
+  randPosVal = posVals[posRand]
+  randNegVal = negVals[negRand]
+  newPosVals.append(randPosVal)
+  newNegVals.append(randNegVal)
+  print(str(i) + ": RandomPositiveDegree is [" + randPosVal + "] and RandomNegativeDegree is [" + randNegVal + "]")
 
+print("Pos vals: " + str(newPosVals))
+print("Neg vals: " + str(newNegVals))
+print("---- Complete ----\n")
